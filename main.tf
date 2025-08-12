@@ -1,5 +1,9 @@
 resource "random_pet" "p" {}
 
+provider "aws" {
+  region = "us-east-1"
+}
+
 resource "aws_s3_bucket" "mktest" {
   bucket = random_pet.p.id
 
