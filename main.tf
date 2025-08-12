@@ -1,16 +1,22 @@
 resource "random_pet" "p" {}
 
 provider "aws" {
+  alias  = "va"
   region = "us-east-1"
 }
 
 resource "aws_s3_bucket" "mktest" {
-  bucket = random_pet.p.id
+  provider = aws.va
+  bucket   = random_pet.p.id
 
   tags = {
     Name        = random_pet.p.id
     Environment = "env0"
   }
+}
+
+output "bucket-name" {
+  value = "aws_s3_bucket.mktest.name"
 }
 
 terraform {
