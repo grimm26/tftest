@@ -12,6 +12,7 @@ resource "aws_s3_bucket" "mktest" {
   tags = {
     Name        = random_pet.p.id
     Environment = "env0"
+    Foo         = "bar"
   }
 }
 resource "aws_s3_bucket_versioning" "mktest" {
