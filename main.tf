@@ -14,6 +14,13 @@ resource "aws_s3_bucket" "mktest" {
     Environment = "env0"
   }
 }
+resource "aws_s3_bucket_versioning" "mktest" {
+  provider = aws.va
+  bucket   = aws_s3_bucket.mktest.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
 
 output "bucket-name" {
   value = "aws_s3_bucket.mktest.name"
