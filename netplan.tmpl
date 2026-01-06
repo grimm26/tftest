@@ -1,0 +1,12 @@
+version: 2
+ethernets:
+  nic:
+    match:
+      name: "${interface}"
+    dhcp4: no
+    dhcp6: no
+    addresses: [${ip_address}/${subnet_prefix_length}]
+    gateway4:  ${def_gateway}
+    nameservers:
+      addresses: [${dns_resolver}]
+      search: [${dns_zone} urcompany.com]
